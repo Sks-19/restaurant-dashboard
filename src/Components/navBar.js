@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+
 import { authActions } from "../store/auth";
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -9,18 +9,11 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-light bg-dark p-4">
-        <NavLink to="/" type="button" className="btn btn-primary">
-          Home page
-        </NavLink>
-        <NavLink
-          to="/bookmarked"
-          type="button"
-          className="btn btn-outline-success"
-        >
-          Bookmarked Restauants
-        </NavLink>
-
+      <nav
+        className="navbar navbar-light py-2 px-4"
+        style={{ backgroundColor: "#14202e" }}
+      >
+        <h1 className="text-white navbar-brand">Restaurant Dashboard</h1>
         <button type="button" className="btn btn-danger" onClick={handleLogout}>
           Logout
         </button>

@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./Components/navBar";
+import Section from "./Components/section";
 import Home from "./Components/home";
 import Bookmark from "./Components/bookmark";
 import Login from "./Components/Login";
@@ -12,9 +13,6 @@ import { bookmarkActions } from "./store/bookmark_list";
 function App() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-
-  const restData = useSelector((state) => state.restaurant.restData);
-  const bookmarkData = useSelector((state) => state.bookmark.bookmarkData);
 
   useEffect(() => {
     if (!localStorage.getItem("restData")) {
@@ -32,17 +30,13 @@ function App() {
     dispatch(bookmarkActions.updateBookmark(localBookData));
   }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem("restData", JSON.stringify(restData));
-  //   localStorage.setItem("bookData", JSON.stringify(bookmarkData));
-  // }, [restData, bookmarkData]);
-
   return (
     <>
       {!isLoggedIn && <Login />}
       {isLoggedIn && (
         <>
           <Navbar />
+          <Section />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/bookmarked" element={<Bookmark />} />

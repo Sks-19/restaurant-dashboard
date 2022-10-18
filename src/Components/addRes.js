@@ -3,6 +3,7 @@ import "./addRes.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { restActions } from "../store/res_list";
+import swal from "sweetalert";
 
 const AddRes = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const AddRes = () => {
     let data = document.getElementById("addRes").value;
 
     if (data !== "") {
+      swal("Congratulations!", "Restaurant added to dashboard!", "success");
       let obj = {
         id: restData?.length + 1,
         name: data,
@@ -46,14 +48,15 @@ const AddRes = () => {
 
   return (
     <>
-      <form>
+      <form style={{ backgroundColor: "#14202e" }}>
         <div className="d-flex p-4">
           <input
             type="text"
             list="inputRes"
             id="addRes"
-            className="form-control"
+            className="form-control bg-dark text-white"
             onChange={debounce(handleChange, 500)}
+            placeholder="Enter restaurant to add..."
           />
 
           <datalist id="inputRes">

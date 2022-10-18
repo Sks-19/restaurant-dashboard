@@ -27,40 +27,51 @@ const Bookmark = () => {
   return (
     <>
       <div className="container">
-        <h1 style={{ textAlign: "center" }} className="my-4">
-          {" "}
-          Bookmarked Restauants{" "}
+        <h1 style={{ textAlign: "center" }} className="py-4 text-white">
+          Bookmarked Restauants
         </h1>
-        <div className="Cardss">
-          {bookmarkData?.map((res, index) => {
-            return (
-              <>
-                <div className="card mb-3" key={index}>
-                  <embed
-                    type="text/html"
-                    src={`https://datastudio.google.com/embed/reporting/430242fa-4162-4950-a984-824b3b355b3c/page/dQMwC?params={"ds2.name2":"${res.name}"}`}
-                    width="100%"
-                    height="350"
-                  ></embed>
-                  <div className="card-body">
-                    <h5 className="card-title">{res.name}</h5>
-                    <div className="">
-                      <button
-                        type="button"
-                        name={res.name}
-                        value={res.id}
-                        className="btn btn-outline-primary w-50 m-4"
-                        onClick={handleRemove}
-                      >
-                        Remove
-                      </button>
+        {bookmarkData?.length === 0 ? (
+          <section>
+            <h1 className="text-secondary" style={{ textAlign: "center" }}>
+              No bookmarked data!
+            </h1>
+          </section>
+        ) : (
+          <div className="Cardss">
+            {bookmarkData?.map((res, index) => {
+              return (
+                <>
+                  <div
+                    className="card mb-3"
+                    key={index}
+                    style={{ backgroundColor: "#2d4356" }}
+                  >
+                    <embed
+                      type="text/html"
+                      src={`https://datastudio.google.com/embed/reporting/430242fa-4162-4950-a984-824b3b355b3c/page/dQMwC?params={"ds2.name2":"${res.name}"}`}
+                      width="100%"
+                      height="350"
+                    ></embed>
+                    <div className="card-body">
+                      <h5 className="card-title text-white">{res.name}</h5>
+                      <div className="">
+                        <button
+                          type="button"
+                          name={res.name}
+                          value={res.id}
+                          className="btn btn-outline-primary w-50 m-4"
+                          onClick={handleRemove}
+                        >
+                          Remove
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </>
-            );
-          })}
-        </div>
+                </>
+              );
+            })}
+          </div>
+        )}
       </div>
     </>
   );

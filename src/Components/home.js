@@ -5,8 +5,11 @@ const Home = () => {
   return (
     <>
       <div className="container">
-        <h1 style={{ textAlign: "center" }}> Restaurant List </h1>
         <AddRes />
+        <h1 className="py-3 text-white" style={{ textAlign: "center" }}>
+          Restaurant List
+        </h1>
+
         <DisplayRes />
       </div>
     </>

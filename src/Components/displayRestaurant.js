@@ -35,10 +35,14 @@ const DisplayRes = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container" style={{ backgroundColor: "#14202e" }}>
         <div className="Cardss">
           {restData?.map((res) => (
-            <div className="card mb-3" key={res.id}>
+            <div
+              className="card mb-3"
+              key={res.id}
+              style={{ backgroundColor: "#2d4356" }}
+            >
               <embed
                 type="text/html"
                 src={`https://datastudio.google.com/embed/reporting/430242fa-4162-4950-a984-824b3b355b3c/page/dQMwC?params={"ds2.name2":"${res.name}"}`}
@@ -46,7 +50,7 @@ const DisplayRes = () => {
                 height="350"
               ></embed>
               <div className="card-body">
-                <h5 id="title" className="card-title">
+                <h5 id="title" className="card-title text-white">
                   {res.name}
                 </h5>
                 <div className="">
